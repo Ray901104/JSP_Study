@@ -1,52 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0">
-    <display-name>Apache-Axis</display-name>
-    <servlet>
-        <display-name>Apache-Axis Servlet</display-name>
-        <servlet-name>AxisServlet</servlet-name>
-        <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <display-name>Axis Admin Servlet</display-name>
-        <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>org.apache.axis.transport.http.AdminServlet</servlet-class>
-        <load-on-startup>100</load-on-startup>
-    </servlet>
-    <servlet>
-        <display-name>SOAPMonitorService</display-name>
-        <servlet-name>SOAPMonitorService</servlet-name>
-        <servlet-class>org.apache.axis.monitor.SOAPMonitorService</servlet-class>
-        <init-param>
-            <param-name>SOAPMonitorPort</param-name>
-            <param-value>5101</param-value>
-        </init-param>
-        <load-on-startup>100</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AxisServlet</servlet-name>
-        <url-pattern>/servlet/AxisServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AxisServlet</servlet-name>
-        <url-pattern>*.jws</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AxisServlet</servlet-name>
-        <url-pattern>/services/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SOAPMonitorService</servlet-name>
-        <url-pattern>/SOAPMonitor</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminServlet</servlet-name>
-        <url-pattern>/servlet/AdminServlet</url-pattern>
-    </servlet-mapping>
-    <mime-mapping>
-        <extension>wsdl</extension>
-        <mime-type>text/xml</mime-type>
-    </mime-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+    <display-name>MustHaveJSP</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- 컨텍스트 초기화 매개변수(예제 2-10) -->
+    <context-param>
+        <param-name>INIT_PARAM</param-name>
+        <param-value>web.xml에 저장한 초기화 매개변수</param-value>
+    </context-param>
+
+    <!-- 에러 페이지 처리하기(예제 2-12) -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/02ImplicitObject/Exception.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>405</error-code>
+        <location>/02ImplicitObject/Exception.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/02ImplicitObject/Exception.jsp</location>
+    </error-page>
 </web-app>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"-->
+<!--         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"-->
+<!--         version="4.0">-->
+<!--    <display-name>Apache-Axis</display-name>-->
+<!--    <servlet>-->
+<!--        <display-name>Apache-Axis Servlet</display-name>-->
+<!--        <servlet-name>AxisServlet</servlet-name>-->
+<!--        <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet>-->
+<!--        <display-name>Axis Admin Servlet</display-name>-->
+<!--        <servlet-name>AdminServlet</servlet-name>-->
+<!--        <servlet-class>org.apache.axis.transport.http.AdminServlet</servlet-class>-->
+<!--        <load-on-startup>100</load-on-startup>-->
+<!--    </servlet>-->
+<!--    <servlet>-->
+<!--        <display-name>SOAPMonitorService</display-name>-->
+<!--        <servlet-name>SOAPMonitorService</servlet-name>-->
+<!--        <servlet-class>org.apache.axis.monitor.SOAPMonitorService</servlet-class>-->
+<!--        <init-param>-->
+<!--            <param-name>SOAPMonitorPort</param-name>-->
+<!--            <param-value>5101</param-value>-->
+<!--        </init-param>-->
+<!--        <load-on-startup>100</load-on-startup>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>AxisServlet</servlet-name>-->
+<!--        <url-pattern>/servlet/AxisServlet</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>AxisServlet</servlet-name>-->
+<!--        <url-pattern>*.jws</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>AxisServlet</servlet-name>-->
+<!--        <url-pattern>/services/*</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>SOAPMonitorService</servlet-name>-->
+<!--        <url-pattern>/SOAPMonitor</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>AdminServlet</servlet-name>-->
+<!--        <url-pattern>/servlet/AdminServlet</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    <mime-mapping>-->
+<!--        <extension>wsdl</extension>-->
+<!--        <mime-type>text/xml</mime-type>-->
+<!--    </mime-mapping>-->
+
+<!--    &lt;!&ndash; 초기화 매개변수 추가 &ndash;&gt;-->
+<!--    <context-param>-->
+<!--        <param-name>INIT_PARAM</param-name>-->
+<!--        <param-value>web.xml에 저장한 초기화 매개변수</param-value>-->
+<!--    </context-param>-->
+
+<!--    &lt;!&ndash; 에러별 출력 페이지 설정 &ndash;&gt;-->
+<!--    <error-page>-->
+<!--        <error-code>404</error-code>-->
+<!--        <location>/02ImplicitObject/Exception.jsp</location>-->
+<!--    </error-page>-->
+<!--    <error-page>-->
+<!--        <error-code>405</error-code>-->
+<!--        <location>/02ImplicitObject/Exception.jsp</location>-->
+<!--    </error-page>-->
+<!--    <error-page>-->
+<!--        <error-code>500</error-code>-->
+<!--        <location>/02ImplicitObject/Exception.jsp</location>-->
+<!--    </error-page>-->
+<!--</web-app>-->
